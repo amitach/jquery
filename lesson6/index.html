@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>Lesson 6
+	</title>	
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="container">
+	<h2>Click Me</h2>
+</div>
+<script type="text/javascript" src="../jquery-1.9.1.js"></script>
+<script type="text/javascript">
+// function:
+// function:
+(function(){
+	$(".container").on("click",'h2',function(){
+		$(this).clone().appendTo(".container");
+	})
+})();
+
+</script>
+</body>
+</html>
