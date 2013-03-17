@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Lesson 5
+	</title>	
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<dl>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7</dd>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7</dd>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7</dd>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7</dd>
+	<dt>What are your hours?</dt>
+	<dd>We are open 24/7</dd>
+</dl>
+
+<script type="text/javascript" src="../jquery-1.9.1.js"></script>
+<script type="text/javascript">
+// function:
+// function:
+(function(){
+	$('dd').filter(":nth-child(n+4)").hide();
+	$('dl').on("click",'dt', function(){
+		$(this)
+		.next()
+			.slideDown()
+				.siblings("dd")
+					.slideUp(200);
+	});
+  
+})();
+
+</script>
+</body>
+</html>
