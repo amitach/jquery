@@ -1,0 +1,164 @@
+<html>
+<head>
+	<title>
+	</title>
+	<style type="text/css">
+		body{
+			width: 600px;
+			margin:auto;
+			font-family: sans-serif;
+		}
+		#contact{
+			background: #e3e3e3;
+			padding: 1em 2em;
+			position: relative;
+		}
+		#contact h2{
+			margin-top: 0;
+		}
+
+		#contact ul{
+			padding: 0;
+		}
+		#contact li{
+			list-style: none;
+			margin-bottom: 1em;
+		}
+		.close{
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			font-weight: bold;
+			font-family: sans-serif;
+			cursor: pointer;
+		}
+		input,textarea{
+			width: 100%;
+			line-height: 2em;
+		}
+		input[type=submit]{
+			width:auto;
+		}
+		label{
+			display: block;
+			text-align: left;
+		}
+		
+		.js #contact{
+			position: absolute;
+			top: 0;
+			width: inherit;
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+
+<article>
+	<h1>
+		My Awesome Post
+	</h1>	
+		<p>
+			Lorem Ipsum dolor sit amet, consectetur adipisicing  elit, set do eiusmod tempor... 
+		</p>
+		<p>
+			Lorem Ipsum dolor sit amet, consectetur adipisicing  elit, set do eiusmod tempor... 
+		</p>
+		<p>
+			Lorem Ipsum dolor sit amet, consectetur adipisicing  elit, set do eiusmod tempor... 
+		</p>
+		<p>
+			Lorem Ipsum dolor sit amet, consectetur adipisicing  elit, set do eiusmod tempor... 
+		</p>
+		<p>
+			Lorem Ipsum dolor sit amet, consectetur adipisicing  elit, set do eiusmod tempor... 
+		</p>
+		<p>
+			Lorem Ipsum dolor sit amet, consectetur adipisicing  elit, set do eiusmod tempor... 
+		</p>
+		<p>
+			Lorem Ipsum dolor sit amet, consectetur adipisicing  elit, set do eiusmod tempor... 
+		</p>
+		<p>
+			Lorem Ipsum dolor sit amet, consectetur adipisicing  elit, set do eiusmod tempor... 
+		</p>
+</article>
+<div id="contact">
+	<h2>
+	<form action="#">
+		<ul>	
+			<li>
+				<label for="name">Name: </label>
+				<input name="name" id="name">
+			</li>
+			<li>
+				<label for="email">Email: </label>
+				<input name="email" id="email">
+			</li>
+			<li>
+				<label for="comments">What's Up? </label>
+				<textarea name="comments" id = "comments" cols="30" rows="10"></textarea> 
+			</li>
+			<li>
+				<input type="submit" value = "Submit">
+			</li>
+		</ul>	
+	</form>
+	</h2>
+</div>
+<script type="text/javascript" src="../jquery-1.9.1.js">
+</script>
+<script type="text/javascript">
+// function:
+(function(){
+  $("html").addClass("js");
+
+  var contactForm = {
+  	container: $("#contact"),
+
+  	config: {
+		effect: 'slideToggle', 
+		speed: 2000
+  	},
+
+  	init: function(config){
+  		$.extend(this.config, config)
+  		$("<button></button>",{
+  			text: "Contact me",
+  		}).insertAfter("article:first")
+  			.on("click", this.show);
+  	},// End of init function
+
+  	show: function(){
+  		var container = contactForm.container,
+  			config = contactForm.config,
+  			cf = contactForm;
+  		if(container.is(":hidden")){		
+	  		cf.close.call(container);
+	  		container[config.effect](config.speed);
+  		}
+  	},
+
+  	close: function(){
+  		$this = $(this);
+
+  		if($this.find("span.close").length) return; 
+  		$("<span class='close'>X</span>")
+  			.prependTo(this)
+  				.on("click",function(){
+  					$this[contactForm.config.effect](contactForm.config.speed);
+  				});
+  	}
+
+  };//End of contactForm 
+
+  contactForm.init({
+  	effect: "fadeToggle",
+  	speed: 300
+  });
+})();
+
+</script>
+</body>
+</html>
