@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>
+	</title>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<a href="http://www.google.com/">CLICK ME</a>
+<script type="text/javascript" src="../jquery-1.9.1.js">
+</script>
+<script type="text/javascript">
+
+var obj = {
+	doIt: function(e){
+		e.preventDefault();
+		console.log("inside object.doIt: "+this);
+	}
+}
+
+$("a").on("click", $.proxy(obj.doIt, obj) );
+/*
+function doSomething(e){
+	console.log(e);
+	e.preventDefault();
+	console.log(this);
+// }*/
+// $("a").on("click",function(e){
+// 	obj.doIt.call(this,e);
+// 	// console.log("inside anonymous function:" +this);
+// });
+
+</script>
+</body>
+</html>
