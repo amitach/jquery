@@ -9,7 +9,7 @@
 	</style>
 </head>
 <body>
-<h1>Reveal</h1>
+<h1>Click Me</h1>
 <div class="content">
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit,Lorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elit
@@ -22,13 +22,25 @@
 <script type="text/javascript" src="../jquery-1.9.1.js">
 </script>
 <script type="text/javascript">
+// function:
+(function(){
 $("div.content").hide();
-$.fx.speeds.tortoise = "5000";
-$("h1").on("click",function(){
-	console.log($.fx.speeds);
-	$(this).next().slideDown();
-})
+    $.fn.flash = function (speed, easing, callback) {
+    	var $this = $(this);
+    	$this.slideDown(500,function(){
+    		$this	.delay(2000).slideUp(500);
+    	});
+    	// return this.animate( props, speed, easing, callback );
+    };
+
+var content = $("div.content").hide();
+
+$("h1").on("click", function(){
+	content.flash();
+});  
+})();
 
 </script>
+
 </body>
 </html>
