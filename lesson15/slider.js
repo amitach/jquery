@@ -13,7 +13,7 @@ Slider.prototype.transition = function(coords){
 		'margin-left': coords || -(this.current * this.imgWidth)
 	})
 };
-
+ 
 Slider.prototype.setCurrent = function(dir){	
 	var pos = this.current;
 	pos += (~~(dir === "next") || -1); 
