@@ -1,35 +1,33 @@
-(function($){
-	var sliderUL = $("div.slider").css("overflow","hidden").children("ul");
-	var imgs = sliderUL.find("img");
-	var imgWidth = imgs.width();
-	var imgsLen = imgs.length;
-	var current = 1;
-	var totalImgsWidth = imgsLen * imgWidth;
-	$("#slider-nav").show().find("button").on('click', function () {
-		var loc = imgWidth;
-		var direction = $(this).data("dir");
-		(direction === "next" ) ? ++current : --current;
+function Slider (container, nav) {
+	this.container = container;
+	this.nav = nav.show();
+	this.imgs = this.container.find("img");
+	this.imgWidth = this.imgs[0].width;
+	this.imgsLen = this.imgs.length;
+	this.current = 0;
+}
 
-		if(current === 0){
-			current = imgsLen;
-			loc = totalImgsWidth - imgWidth;
-			direction = "next";
-		}else if( ( current - 1 ) === imgsLen ){
-			current = 1;
-			loc = 0;
-		}
-		console.log("current: " + current);
-		transition( sliderUL, loc , direction );
-	});
+Slider.prototype.transition = function(coords){
+	this.container.animate({
+		'margin-left': coords || -(this.current * this.imgWidth)
+	})
+};
 
-	function transition( container, loc, direction ) {
-		var unit;
-		if ( direction && loc !== 0){
-			unit = ( direction === "next" ) ? "-=" : "+=" ;
-		}
-		console.log("unit: "+ unit + ", direction: "+ direction + ", loc: "  + loc );
-		container.animate({
-			'margin-left': unit ? (unit + loc ): loc
-		})
-	}
-})(jQuery);	
+Slider.prototype.setCurrent = function(dir){	
+	var pos = this.current;
+	pos += (~~(dir === "next") || -1); 
+	this.current = ( pos < 0) ? this.imgsLen - 1 : pos % this.imgsLen;
+	return pos;
+};
+
+
+// Slider.prototype.move = function(){
+// 	console.log("moving  " + this.direction);
+// }
+
+// var slider = new Slider();
+
+// var slider1 = new Slider("backward");
+
+// slider.move();
+// slider1.move();

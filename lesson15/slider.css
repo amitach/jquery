@@ -17,7 +17,7 @@ img{
 .slider{
 	width:inherit;
 	height: 300px;
-	overflow: hidden;
+	overflow: scroll;
 }
 
 .slider ul{
