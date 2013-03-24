@@ -1,0 +1,69 @@
+<html>
+<head>
+	<meta>
+	<title>The Obligatory Slider</title>
+	<style type="text/css">
+		body{
+			width: 600px;
+			margin: 100px auto 0 ;
+		}
+		*{
+			margin: 0;
+			padding: 0; 
+		}
+	</style>
+	<link rel="stylesheet" href="slider.css">
+</head>
+<div class="slider">
+	<ul>
+		<li> <img src="img/img1.jpg" alt="image"> </li>
+		<li> <img src="img/img2.jpg" alt="image"> </li>
+		<li> <img src="img/img3.jpg" alt="image"> </li>
+		<li> <img src="img/img4.jpg" alt="image"> </li>
+	</ul>
+</div>
+<div id="slider-nav">
+	<button data-dir="prev">Previous</button>
+	<button data-dir="next">Next</button>
+</div>
+<script src="../jquery-1.9.1.js"></script>
+<script src="slider.js"></script>
+<script>
+	// function:
+	(function($){
+	 	var sliderUL = $("div.slider").css("overflow","hidden").children("ul");
+	 	var imgs = sliderUL.find("img");
+	 	var imgWidth = imgs.width();
+	 	var imgsLen = imgs.length;
+	 	var current = 1;
+	 	var totalImgsWidth = imgsLen * imgWidth;
+	 	$("#slider-nav").show().find("button").on('click', function () {
+	 		var loc = imgWidth;
+	 		var direction = $(this).data("dir");
+	 		(direction === "next" ) ? ++current : --current;
+
+	 		if(current === 0){
+	 			current = imgsLen;
+	 			loc = totalImgsWidth - imgWidth;
+	 			direction = "next";
+	 		}else if( ( current - 1 ) === imgsLen ){
+	 			current = 1;
+	 			loc = 0;
+	 		}
+	 		console.log("current: " + current);
+	 		transition( sliderUL, loc , direction );
+	 	});
+
+	 	function transition( container, loc, direction ) {
+	 		var unit;
+	 		if ( direction && loc !== 0){
+	 			unit = ( direction === "next" ) ? "-=" : "+=" ;
+	 		}
+	 		console.log("unit: "+ unit + ", direction: "+ direction + ", loc: "  + loc );
+	 		container.animate({
+	 			'margin-left': unit ? (unit + loc ): loc
+	 		})
+	 	}
+	})(jQuery);
+</script>
+</html>
