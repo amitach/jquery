@@ -10,14 +10,59 @@
 			box-shadow: 1px 3px 20px #ccc;
 			color:black;
 		}
+		input{
+			padding: 5px;
+			margin-left:35px;
+		}
 		ul{list-style:none;}
 		li{padding-bottom: 1em; border-bottom: 1px solid #ccc;}
 		img{float:left; padding-right: 1em;}
 		a{text-decoration: none; color:#222;}
+
+		h1{
+			position:relative;
+			left:30px;
+		}
+
+
+		button.css3button {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #000000;
+	padding: 8px 20px;
+	background: -moz-linear-gradient(
+		top,
+		#ffffff 0%,
+		#888deb);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#ffffff),
+		to(#888deb));
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #000000;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 5px rgba(108,153,230,0.6);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 5px rgba(108,153,230,0.6);
+	box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 5px rgba(108,153,230,0.6);
+	text-shadow:
+		0px -1px 3px rgba(255,255,255,0.8),
+		0px 1px 0px rgba(255,255,255,0.3);
+}
 	</style>
 </head>
 <body>
+
 	<div class="container">
+	<h1> Twitter Search </h1>
+		<input type = "text" id = "search"/>
+		<button id="search-button" class = "css3button">Search</button>
 		<ul class="tweets" >
 			<script id ="tweets-template" type = "text/x-handlebars-template">
 			{{#each this}}
@@ -66,10 +111,14 @@
 	  		});
 	  	}
 	  }
-	  Twitter.init({
+	  
+	  $("#search-button").on("click",function(){
+	  	$("ul>li").remove();
+	  	Twitter.init({
 	  	template: $("#tweets-template").html(),
 	  	container: $("ul.tweets"),
-	  	query: "man utd"
+	  	query: $("#search").val()
+	  });
 	  });
 	})();
 	
