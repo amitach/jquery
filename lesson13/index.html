@@ -1,0 +1,49 @@
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Animate</title>
+	<style>
+	body{ width: 400px; margin: 100px auto;}
+	.box{
+		width: 400px;
+		background: red;
+		position: relative;
+		overflow: hidden;
+	}
+	button{
+		margin-top: 10px
+	}
+	</style>
+</meta>
+</head>
+<body>
+	<div class="box">
+		<h2>Hi There
+		</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi corporis dolorum vitae expedita repellendus velit tempora dolores vero distinctio voluptatum! Ea cum totam officia officiis qui explicabo consequuntur est doloremque excepturi nam hic dignissimos deserunt amet quia odit omnis adipisci beatae? Unde qui repudiandae tempore magnam officia ipsam animi quam sapiente. Ullam dolore soluta unde totam error eveniet alias accusantium laboriosam consequuntur ipsam voluptate voluptatum at consectetur consequatur aut quibusdam cupiditate ipsa esse impedit dolorum aspernatur nemo doloremque architecto harum magnam veniam repudiandae officia quas dolorem voluptatibus. Quasi saepe dolor consectetur voluptate architecto molestias commodi eveniet perferendis sint laborum quo culpa provident dolores in optio numquam iste repudiandae nihil rerum temporibus. Reprehenderit suscipit voluptates similique qui quam nam et quis consequuntur incidunt doloremque rati</p> 
+	</div>
+	<button>FadeSlideToggle</button>
+	<script src="../jquery-1.9.1.js"></script>
+	<script>
+		// function:
+		(function(){
+			var box = $("div.box");
+		  $.fn.FadeSlideToggle = function(speed, fn){
+		  	return $(this).animate({
+		  		'height': 'toggle',
+		  		'opacity': 'toggle'
+		  	},speed || 400,function(){
+		  		$.isFunction(fn) && fn.call(this);
+		  	});
+		  };
+		  
+		  $("button").on('click', function () {
+		  		box.FadeSlideToggle(2000,function(){
+		  			console.log("Finished");
+		  		});
+		  });
+		})();
+		
+	</script>
+</body>
+</html>

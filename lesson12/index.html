@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>
+	</title>
+	<style type="text/css">
+	.box{
+		width: 400px;
+		background: darkred ;
+		padding: 2em;
+		position: relative;
+	}
+	</style>
+</head>
+<body>
+<h2>Some content here</h2>
+<div class="box">
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit,Lorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elit
+	</p>
+	
+</div>
+<script type="text/javascript" src="../jquery-1.9.1.js">
+</script>
+<div>
+<button>Center</button>
+</ div>
+<script type="text/javascript">
+// function:
+(function(){
+	var box = $("div.box");
+	$("button").on("click",function(){
+		/*box.animate({
+			'font-size': "+=5",
+			'width': '+=300'
+		},500, 'swing', function(){
+			console.log("Inside animate");
+		});*/
+/*
+		box
+		.animate({
+			 'font-size': "+=5"
+		},{	duration: 3000,})
+		.animate({ 
+			'width': 505,
+			'background-color': "red"
+		},{duration: 3000, queue: false});*/
+		var w = $(window).outerWidth()/2 - box.outerWidth()/2.
+		    h = $(window).outerHeight()/2 - box.outerHeight()/2;
+		box.animate(
+			{
+				"left":w,
+				'position':'absolute'
+			})
+			.animate({
+				'top':h
+			}, {duration: 200,queue: false})
+	});
+})();
+
+</script>
+</body>
+</html>
