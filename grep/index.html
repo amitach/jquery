@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div>
+		<p><span>Hello</span></p>
+	</div>
+	<script src="../jquery-1.9.1.js"></script>
+	<script type="text/javascript">
+
+		// function:
+		(function(){
+		  var arr = [
+		  	{
+		  		f: "amit",
+		  		surname: "acharya"
+		  	},
+		  	{
+		  		f: "rahul",
+		  		surname: "acharya"
+		  	},
+		  		{
+		  		f: "prashanth",
+		  		surname: "rajagopal"
+		  	}
+
+		  ];
+
+		  arr = $.grep(arr,function(val,index){
+		  		return val.surname === "acharya";
+		  });
+		  $.map(arr,function(val, index){
+		  		console.log(val.surname);
+		  });
+		})();
+		
+	</script>
+</body>
+</html>
